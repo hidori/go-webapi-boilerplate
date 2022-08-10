@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  webapi-mysql:
+    container_name: webapi-mysql
+    restart: always
+    image: mysql:8.0
+    ports:
+      - 13306:3306
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -uroot -pP@ssw0rd
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - MYSQL_DATABASE=webapi
+      - MYSQL_ROOT_PASSWORD=P@ssw0rd
+    volumes:
+      - webapi-mysql-data:/var/lib/mysql
+
+volumes:
+  webapi-mysql-data:
+
+networks:
+  default:
+    name: webapi-network
+    external: true

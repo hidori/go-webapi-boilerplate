@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "./database"
+		},
+		{
+			"path": "./openapi"
+		},
+		{
+			"path": "./go"
+		}
+	],
+	"settings": {
+		"go.testEnvFile": "${workspaceFolder}/.env.test",
+		"cSpell.words": [
+			"cmpopts",
+			"interactor",
+			"labstack",
+			"usecase",
+			"webapi",
+			"xtest",
+			"xtestgorm"
+		]
+	}
+}

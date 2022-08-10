@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  webapi-api:
+    container_name: webapi-api
+    restart: always
+    build:
+      context: .
+      dockerfile: ./cmd/api/Dockerfile
+    ports:
+      - 14000:4000
+    env_file:
+      - ./.env.compose
+
+networks:
+  default:
+    name: webapi-network
+    external: true

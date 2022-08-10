@@ -1,0 +1,43 @@
+run:
+  go: "1.18"
+  tests: false
+  timeout: 3m
+  skip-dirs:
+    - .vscode
+    - bin
+    - reports
+    - test
+  skip-files:
+    - ".*_test.go$"
+
+output:
+  sort-results: true
+
+linters:
+  enable-all: true
+  disable:
+    # Deprecated
+    - exhaustivestruct
+    - golint
+    - ifshort
+    - interfacer
+    - maligned
+    - scopelint
+    # Because of generics
+    - contextcheck
+    - rowserrcheck
+    - sqlclosecheck
+    - structcheck
+    - wastedassign
+    # Custom
+    - dupl
+    - exhaustruct
+    - gochecknoglobals
+    - godox
+    - goerr113
+    - lll
+    - nilnil
+    - nlreturn
+    - varnamelen
+    - wrapcheck
+    - wsl

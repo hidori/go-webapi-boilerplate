@@ -1,0 +1,15 @@
+FROM golang:1.18
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update \
+  && apt-get upgrade -y \
+  && apt-get install -y ca-certificates tzdata \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN go install -v github.com/pressly/goose/v3/cmd/goose@latest
+
+COPY ./migrations/ /var/webapi/database/migrations/
+
+WORKDIR /var/webapi/database/migrations/
+
+CMD ["/bin/sh", "-c", "goose mysql \"${DSN}\" up"]
